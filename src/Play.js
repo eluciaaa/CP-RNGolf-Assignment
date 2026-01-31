@@ -37,6 +37,8 @@ class Play extends Phaser.Scene {
         this.cup.body.setCircle(this.cup.width / 4)
         this.cup.body.setOffset(this.cup.width / 4)
         this.cup.body.setImmovable(true)
+        this.cup.body.pushable = false
+        this.cup.body.setAllowGravity(false)
         
         // add ball
         this.ball = this.physics.add.sprite(width / 2, height - height / 10, 'ball')
