@@ -79,13 +79,15 @@ class Play extends Phaser.Scene {
         })
 
         // cup/ball collision
-        this.physics.add.collider(this.ball, this.cup, (ball, cup) => {
+        this.physics.add.overlap(this.ball, this.cup, (ball, cup) => {
             this.scoreCount ++
             this.scoreCountText.setText('Score: ' + this.scoreCount)
             this.successPercent = this.scoreCount / this.shotCount
             this.successPercentText.setText('Success %: ' + Math.round(this.successPercent * 100) + '%')
             ball.setPosition(width / 2, height - height / 10)
             ball.body.stop()
+            wallA.setX(Phaser.Math.Between(0 + wallA.width / 2, width - wallA.width / 2))
+            wallB.setX(Phaser.Math.Between(0 + wallB.width / 2, width - wallB.width / 2))
         })
 
         // ball/wall collision
